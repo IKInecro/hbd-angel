@@ -49,7 +49,6 @@ body {
   inset: 0;
   transform-style: preserve-3d;
   transition: transform 0.9s;
-  will-change: transform;
 }
 .card.open .flip-inner { transform: rotateY(180deg); }
 .face {
