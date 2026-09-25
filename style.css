@@ -30,21 +30,6 @@ body {
 }
 
 #content { padding-bottom: 32px; }
-.greet {
-  text-align: center;
-  color: #000046;
-  margin: 18px 12px 0;
-  font-size: clamp(20px, 5vw, 32px);
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-.greet span {
-  background: linear-gradient(90deg, #c81d5e, #ff5e3a);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hint { text-align: center; margin: 10px; opacity: 0.8; }
 
 /* --- 1 kartu, flip balik badan --- */
 .card {
@@ -250,8 +235,8 @@ body {
     width: min(480px, 94vw);
     height: auto;
     min-height: 560px;
-    min-height: max(560px, calc(100vh - 200px));
-    min-height: max(560px, calc(100svh - 200px));
+    min-height: max(560px, calc(100vh - 60px));
+    min-height: max(560px, calc(100svh - 60px));
   }
   .front {
     display: flex;
