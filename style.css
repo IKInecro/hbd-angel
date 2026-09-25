@@ -201,7 +201,7 @@ body {
 .gate input {
   width: 100%;
   padding: 9px 12px;
-  font-size: 15px;
+  font-size: 16px; /* 16px biar iOS tidak auto-zoom saat fokus */
   text-align: center;
   letter-spacing: 2px;
   border: 2px solid #000046;
@@ -267,30 +267,18 @@ body {
 }
 .msg { font-size: 14px; margin: 8px 0 12px; }
 
-/* --- mobile: kartu jadi susunan vertikal, tanpa flip --- */
-@media (max-width: 700px) {
+/* --- mobile: flip book yang sama, diskala proporsional biar muat --- */
+/* zoom ikut layout (bukan transform) jadi flip/posisi tetap valid */
+@media (max-width: 680px) {
   .card {
     position: relative;
-    width: min(480px, 94vw);
-    height: auto;
-    margin: 14px auto 0;
-    perspective: none;
+    left: auto; right: auto; top: auto; bottom: auto;
+    margin: 14px auto;
+    zoom: 0.9;
   }
-  .card:hover { transform: none; }
-  .card:hover .outside { transform: none; }
-  .card.open { transform: none; }
-  .card.open .outside { transform: none; }
-  .outside, .inside {
-    position: relative;
-    width: 100%;
-    left: 0;
-    height: auto;
-  }
-  .outside { min-height: 590px; }
-  .front, .back { position: absolute; inset: 0; height: auto; min-height: 100%; }
-  .front { padding-bottom: 250px; }
-  .inside { display: none; }
-  .card.unlocked .inside { display: flex; min-height: 300px; }
-  .outside p { font-size: 19px; }
-  .top-layer, .middle-layer, .bottom-layer { width: min(240px, 62vw); }
 }
+@media (max-width: 600px) { .card { zoom: 0.78; } }
+@media (max-width: 520px) { .card { zoom: 0.68; } }
+@media (max-width: 440px) { .card { zoom: 0.58; } }
+@media (max-width: 380px) { .card { zoom: 0.52; } }
+@media (max-width: 340px) { .card { zoom: 0.47; } }
