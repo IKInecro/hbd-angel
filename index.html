@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Angel</title>
+    <!-- Google Font-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Gate kode -->
+    <div id="lock">
+      <div class="lock-box">
+        <h2>🔒 Kartu Terkunci</h2>
+        <p>Masukkan code buat buka kartunya</p>
+        <input id="code" type="password" placeholder="code" autocomplete="off" />
+        <button id="buka">Buka 🎁</button>
+        <p id="error"></p>
+      </div>
+    </div>
+
+    <!-- Isi kartu (disembunyikan sampai kode benar) -->
+    <main id="content" class="hidden">
+      <h1 class="greet">Happy Birthday Angel 🎂</h1>
+      <div class="card">
+        <div class="outside">
+          <div class="front">
+            <p>Happy Birthday</p>
+            <div class="cake">
+              <div class="top-layer"></div>
+              <div class="middle-layer"></div>
+              <div class="bottom-layer"></div>
+              <div class="candle"></div>
+            </div>
+          </div>
+          <div class="back"></div>
+        </div>
+        <div class="inside">
+          <h2>Angel ✨</h2>
+          <div class="photos">
+            <img src="foto1.png" alt="Angel 1" loading="lazy" />
+            <img src="foto2.png" alt="Angel 2" loading="lazy" />
+            <img src="foto3.png" alt="Angel 3" loading="lazy" />
+          </div>
+          <p class="msg">Semoga panjang umur dan sehat selalu (anak IT gak punya banyak kata jir) 😄</p>
+        </div>
+      </div>
+      <p class="hint">ketuk kartunya buat buka 💌</p>
+      <audio id="sfx" src="sfxhbd.mp3" preload="auto"></audio>
+    </main>
+
+    <script>
+      // ponytail: gate client-side, cuma buat kejutan bukan keamanan real. Ganti kode di sini:
+      const CODE = "angelcantik";
+      const lock = document.getElementById("lock");
+      const content = document.getElementById("content");
+      const input = document.getElementById("code");
+      const error = document.getElementById("error");
+      function openCard() {
+        if (input.value.trim() === CODE) {
+          lock.style.display = "none";
+          content.classList.remove("hidden");
+          document.getElementById("sfx").play().catch(() => {});
+        } else {
+          error.textContent = "Code salah, coba lagi 😅";
+        }
+      }
+      document.getElementById("buka").onclick = openCard;
+      input.onkeydown = (e) => { if (e.key === "Enter") openCard(); };
+      // tap-to-open biar jalan di mobile (hover cuma ada di desktop)
+      document.querySelector(".card").onclick = (e) => { e.currentTarget.classList.toggle("open"); };
+    </script>
+  </body>
+</html>
