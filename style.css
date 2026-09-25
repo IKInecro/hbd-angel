@@ -241,17 +241,32 @@ body {
 .msg { font-size: 14px; margin: 8px 0 4px; }
 .tap-hint { font-size: 11px; opacity: 0.6; margin-top: 6px; }
 
-/* --- mobile: kartu yang sama, diskala proporsional --- */
+/* --- mobile: kartu flex mengisi layar ke bawah --- */
 @media (max-width: 680px) {
   .card {
     position: relative;
     left: auto; right: auto; top: auto; bottom: auto;
     margin: 14px auto;
-    zoom: 0.9;
+    width: min(480px, 94vw);
+    height: auto;
+    min-height: 560px;
+    min-height: max(560px, calc(100vh - 200px));
+    min-height: max(560px, calc(100svh - 200px));
   }
+  .front {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 16px 12px;
+  }
+  .cover-title { margin-top: 0; font-size: 20px; }
+  .gate { padding: 10px 0 0; }
+  .gate input { width: 100%; }
+  .cake {
+    position: relative;
+    bottom: auto;
+    margin-top: auto;
+    min-height: 250px;
+  }
+  .back { padding: 16px 14px; }
+  .msg { font-size: 13px; }
 }
-@media (max-width: 600px) { .card { zoom: 0.78; } }
-@media (max-width: 520px) { .card { zoom: 0.68; } }
-@media (max-width: 440px) { .card { zoom: 0.58; } }
-@media (max-width: 380px) { .card { zoom: 0.52; } }
-@media (max-width: 340px) { .card { zoom: 0.47; } }
