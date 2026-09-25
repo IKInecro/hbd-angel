@@ -14,16 +14,15 @@ body {
 /* latar mengambang */
 .blob {
   position: fixed;
-  width: 45vmax;
-  height: 45vmax;
+  width: 70vmax;
+  height: 70vmax;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.45;
   z-index: -1;
+  pointer-events: none;
   animation: drift 14s ease-in-out infinite alternate;
 }
-.b1 { background: #ff8a5c; top: -12vmax; left: -12vmax; }
-.b2 { background: #fff3b0; bottom: -15vmax; right: -12vmax; animation-delay: -7s; }
+.b1 { background: radial-gradient(circle, rgba(255, 138, 92, 0.5), transparent 70%); top: -20vmax; left: -20vmax; }
+.b2 { background: radial-gradient(circle, rgba(255, 243, 176, 0.55), transparent 70%); bottom: -25vmax; right: -20vmax; animation-delay: -7s; }
 @keyframes drift {
   from { transform: translate(0, 0) scale(1); }
   to { transform: translate(6vmax, 4vmax) scale(1.15); }
@@ -50,6 +49,7 @@ body {
   inset: 0;
   transform-style: preserve-3d;
   transition: transform 0.9s;
+  will-change: transform;
 }
 .card.open .flip-inner { transform: rotateY(180deg); }
 .face {
@@ -228,6 +228,7 @@ body {
 
 /* --- mobile: kartu flex mengisi layar ke bawah --- */
 @media (max-width: 680px) {
+  .blob { animation: none; }
   .card {
     position: relative;
     left: auto; right: auto; top: auto; bottom: auto;
